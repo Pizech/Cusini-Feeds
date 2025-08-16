@@ -1,0 +1,249 @@
+/* ---------- Theme variables ---------- */
+:root{
+  --bg1: #0f172a;    /* dark navy */
+  --bg2: #0b1220;    /* darker */
+  --card: #0f172a99; /* semi transparent card */
+  --accent: #ff7a59; /* coral */
+  --muted: #a6b0c3;
+  --glass: rgba(255,255,255,0.04);
+  --radius: 12px;
+  --max-width: 900px;
+  --gap: 16px;
+  --font-sans: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- Page layout ---------- */
+*{box-sizing: border-box}
+html,body{
+  height:100%;
+  margin:0;
+  font-family: var(--font-sans);
+  background: linear-gradient(135deg,var(--bg1),var(--bg2));
+  color: #e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  padding: 32px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* central wrapper used implicitly (body contents will appear centered) */
+main, .wrapper {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ---------- Card / header ---------- */
+header, .card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 6px 24px rgba(2,6,23,0.6);
+  backdrop-filter: blur(6px);
+}
+
+/* top area for the logged-in page */
+.profile-bar {
+  display:flex;
+  align-items:center;
+  gap: var(--gap);
+}
+
+/* profile image */
+.profile-bar img {
+  width:70px;
+  height:70px;
+  object-fit:cover;
+  border-radius:999px;
+  border: 2px solid rgba(255,255,255,0.06);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* Username */
+.profile-bar h1{
+  margin:0;
+  font-size:1.4rem;
+  letter-spacing:0.4px;
+  font-weight:600;
+  color: #f8fafc;
+}
+
+/* Logout button styled and positioned */
+#logout {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--accent);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight:600;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+#logout:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.45); }
+#logout:active { transform: translateY(0); }
+
+/* thin separator */
+hr {
+  border: none;
+  height:1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  margin:18px 0;
+}
+
+/* ---------- Headings used on other pages ---------- */
+h1.page-title {
+  margin: 8px 0 6px;
+  font-size: 2rem;
+  text-align:center;
+  color: #ffffff;
+}
+h2 {
+  margin: 0 0 18px 0;
+  font-size:1.05rem;
+  color: var(--muted);
+  text-align:center;
+}
+
+/* ---------- Form styling (login / register pages) ---------- */
+form {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 420px;
+  background: var(--glass);
+  padding: 18px;
+  border-radius: 12px;
+  display:flex;
+  flex-direction:column;
+  gap: 12px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.55);
+}
+
+/* label + input */
+label{
+  display:block;
+  font-size:0.9rem;
+  color: var(--muted);
+  margin-bottom:6px;
+}
+input[type="text"], input[type="password"], input[type="email"]{
+  width:100%;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  color: #e8f0ff;
+  outline:none;
+  transition: box-shadow .12s ease, border-color .12s ease;
+  font-size:0.95rem;
+}
+input:focus{
+  border-color: rgba(255,255,255,0.16);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+
+/* primary button */
+button[type="submit"], form button {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  background: linear-gradient(90deg,var(--accent), #ff9b7a);
+  color: #081126;
+  transition: filter .12s ease, transform .08s ease;
+}
+button[type="submit"]:hover { filter: brightness(1.03); transform: translateY(-2px); }
+button[type="submit"]:active { transform: translateY(0); }
+
+/* subtle helper text and links */
+form .helper, .meta {
+  font-size:0.9rem;
+  color: var(--muted);
+  text-align:center;
+}
+a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight:600;
+}
+a:hover { text-decoration: underline; }
+
+/* error message */
+.error, .alert {
+  color: #ffb4b4;
+  background: rgba(255,80,80,0.06);
+  border: 1px solid rgba(255,80,80,0.12);
+  padding: 8px 10px;
+  border-radius:8px;
+  font-size:0.92rem;
+  text-align:center;
+}
+
+/* small responsive adjustments */
+@media (max-width:640px){
+  body{ padding:20px 12px; }
+  h1.page-title{ font-size:1.6rem; }
+  .profile-bar h1{ font-size:1.05rem; }
+  form{ padding:14px; }
+}
+
+/* Accessibility: focus visible outlines */
+:focus{ outline: 3px solid rgba(255,255,255,0.06); outline-offset: 2px; }
+
+/* ---------- Page layout: stacked (vertical) ---------- */
+*{ box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: var(--font-sans, "Inter", "Segoe UI", Roboto, Arial, sans-serif);
+  background: linear-gradient(135deg, var(--bg1, #0f172a), var(--bg2, #0b1220));
+  color: #e6eef8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+}
+
+/* Make the body stack children vertically and center them */
+body {
+  display: flex;
+  flex-direction: column;    /* <-- stack vertically */
+  align-items: center;       /* center horizontally */
+  justify-content: flex-start;
+  gap: 28px;                 /* space between title, subtitle, form */
+  padding: 36px 18px;
+}
+
+/* If you want the main content constrained in width */
+main, .wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Make headings full-width and centered (so they appear above the form) */
+h1, h2 {
+  width: 100%;
+  max-width: 900px;
+  margin: 0;
+  text-align: center;
+}
+
+/* Keep the form narrow and centered under the headings */
+form {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* Mobile tweak to make spacing comfortable on small screens */
+@media (max-width: 640px) {
+  body { padding: 20px 12px; gap: 18px; }
+  h1 { font-size: 1.6rem; }
+}
